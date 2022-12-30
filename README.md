@@ -3,7 +3,7 @@
 ## Prerequisites
 
 ```bash
-docker run -d --name pg-image-metadata -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=image-metadata -p 5432:5432 postgres:13
+docker run -d --name pg-orders -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=orders -p 5432:5432 postgres:13
 ```
 
 ## Build and run commands
@@ -17,24 +17,16 @@ Available at: localhost:8080/v1/images
 ## Run in IntelliJ IDEA
 Add new Run configuration and select the Application type. In the next step, select the module api and for the main class com.kumuluz.ee.EeApplication.
 
-Available at: localhost:8080/v1/images
+Available at: localhost:8080/v1/orders
 
 ## Docker commands
-```bash
-docker build -t novaslika .   
-docker images
-docker run novaslika    
-docker tag novaslika prporso/novaslika   
-docker push prporso/novaslika
-docker ps
-```
 
 ```bash
 docker network ls  
 docker network rm rso
 docker network create rso
-docker run -d --name pg-users -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=narocila -p 5432:5432 --network rso postgres
-docker inspect pg-image-metadata
+docker run -d --name pg-orders -e POSTGRES_USER=dbuser -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=narocila -p 5432:5432 --network rso postgres
+docker inspect pg-orders
 docker run -p 8080:8080 --network rso -e KUMULUZEE_DATASOURCES0_CONNECTIONURL=jdbc:postgresql://pg-users:5432/narocila
  rso-users:1.0.0
 ```

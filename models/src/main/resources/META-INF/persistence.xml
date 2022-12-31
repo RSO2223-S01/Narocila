@@ -3,7 +3,6 @@
 	<persistence-unit name="narocila-jpa" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>jdbc/OrdersDS</non-jta-data-source>
 
-		<class>si.fri.rso.skupina1.narocila.models.entities.UserEntity</class>
 		<class>si.fri.rso.skupina1.narocila.models.entities.OrderEntity</class>
 		<class>si.fri.rso.skupina1.narocila.models.entities.OrderItemEntity</class>
 

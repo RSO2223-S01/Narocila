@@ -55,6 +55,15 @@ kumuluzee:
                                   </Root>
                               </Loggers>
                           </Configuration>'
+  rest-client:
+    registrations:
+      - class: deep-translate-api
+        url: https://deep-translate1.p.rapidapi.com/language/
+        read-timeout: 5000
+integrations:
+  deep-translate:
+    apiKey: "ff16bca5a2msh077f9d06bc61535p1efdcajsne7ef9d308100"
+    apiHost: "deep-translate1.p.rapidapi.com"
 rest-properties:
   maintenance-mode: false
   broken: false

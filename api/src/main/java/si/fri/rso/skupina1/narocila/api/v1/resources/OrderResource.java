@@ -13,8 +13,12 @@ import org.eclipse.microprofile.openapi.annotations.responses.APIResponses;
 import org.eclipse.microprofile.metrics.annotation.Metered;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.json.JSONObject;
 import si.fri.rso.skupina1.narocila.lib.Order;
+import si.fri.rso.skupina1.narocila.lib.TranslateRequest;
 import si.fri.rso.skupina1.narocila.services.beans.OrderBean;
+import si.fri.rso.skupina1.narocila.services.clients.TranslateApiClient;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,6 +28,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 import java.util.logging.Logger;
 
 @Log
@@ -37,6 +43,10 @@ public class OrderResource {
 
 	@Inject
 	private OrderBean orderBean;
+
+	@Inject
+	@RestClient
+	private TranslateApiClient translateApiClient;
 
 	@Context
 	protected UriInfo uriInfo;
@@ -88,7 +98,16 @@ public class OrderResource {
 		if (order.getClientId() == null || order.getAddress() == null || order.getItems() == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		} else {
+
+			String response =
+					translateApiClient.translate(new TranslateRequest(order.getComment(), "en", "sl"));
+
+			order.setCommentEN(new JSONObject(response)
+					.getJSONObject("data")
+					.getJSONObject("translations")
+					.getString("translatedText"));
 			order = orderBean.createOrder(order);
+
 		}
 
 		return Response.status(Response.Status.CONFLICT).entity(order).build();
@@ -106,6 +125,15 @@ public class OrderResource {
 	public Response putOrder(
 			@Parameter(description = "Order ID.", required = true) @PathParam("orderId") Integer orderId,
 			@RequestBody(description = "DTO object with order data.", required = true, content = @Content(schema = @Schema(implementation = Order.class))) Order order) {
+
+
+		String response =
+				translateApiClient.translate(new TranslateRequest(order.getComment(), "en", "sl"));
+
+		order.setCommentEN(new JSONObject(response)
+				.getJSONObject("data")
+				.getJSONObject("translations")
+				.getString("translatedText"));
 
 		order = orderBean.putOrder(orderId, order);
 

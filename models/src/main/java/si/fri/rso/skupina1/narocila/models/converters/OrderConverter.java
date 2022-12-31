@@ -17,6 +17,7 @@ public class OrderConverter {
 		dto.setClientScore(entity.getClientScore());
 		dto.setDeliveryScore(entity.getDeliveryScore());
 		dto.setComment(entity.getComment());
+		dto.setCommentEN(entity.getCommentEN());
 		dto.setStatus(entity.getStatus());
 		dto.setItems(entity.getItems().stream().map(OrderItemConverter::toDto).collect(Collectors.toList()));
 
@@ -34,6 +35,7 @@ public class OrderConverter {
 		entity.setClientScore(dto.getClientScore());
 		entity.setDeliveryScore(dto.getDeliveryScore());
 		entity.setComment(dto.getComment());
+		entity.setCommentEN(dto.getCommentEN());
 		entity.setStatus(dto.getStatus());
 		entity.setItems(dto.getItems().stream().map(OrderItemConverter::toEntity).collect(Collectors.toList()));
 

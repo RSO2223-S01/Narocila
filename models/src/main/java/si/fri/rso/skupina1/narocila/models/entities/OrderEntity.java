@@ -36,6 +36,9 @@ public class OrderEntity {
 	@Column(name = "comment")
 	private String comment;
 
+	@Column(name = "commentEN")
+	private String commentEN;
+
 	@Column(name = "status")
 	private String status;
 
@@ -104,6 +107,14 @@ public class OrderEntity {
 
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	public String getCommentEN() {
+		return commentEN;
+	}
+
+	public void setCommentEN(String commentEN) {
+		this.commentEN = commentEN;
 	}
 
 	public String getStatus() {

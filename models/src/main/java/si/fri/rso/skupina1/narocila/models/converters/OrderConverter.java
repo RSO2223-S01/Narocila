@@ -12,6 +12,7 @@ public class OrderConverter {
 		dto.setId(entity.getId());
 		dto.setClientId(entity.getClientId());
 		dto.setDeliveryPersonId(entity.getDeliveryPersonId());
+		dto.setProviderId(entity.getProviderId());
 		dto.setAddress(entity.getAddress());
 		dto.setClientScore(entity.getClientScore());
 		dto.setDeliveryScore(entity.getDeliveryScore());
@@ -28,6 +29,7 @@ public class OrderConverter {
 		entity.setId(dto.getId());
 		entity.setClientId(dto.getClientId());
 		entity.setDeliveryPersonId(dto.getDeliveryPersonId());
+		entity.setProviderId(dto.getProviderId());
 		entity.setAddress(dto.getAddress());
 		entity.setClientScore(dto.getClientScore());
 		entity.setDeliveryScore(dto.getDeliveryScore());

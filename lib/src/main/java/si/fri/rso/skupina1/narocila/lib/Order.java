@@ -7,6 +7,7 @@ public class Order {
 	private Integer id;
 	private Integer clientId;
 	private Integer deliveryPersonId;
+	private Integer providerId;
 	private String address;
 	private Integer clientScore;
 	private Integer deliveryScore;
@@ -36,6 +37,14 @@ public class Order {
 
 	public void setDeliveryPersonId(Integer deliveryPersonId) {
 		this.deliveryPersonId = deliveryPersonId;
+	}
+
+	public Integer getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(Integer providerId) {
+		this.providerId = providerId;
 	}
 
 	public String getAddress() {

@@ -21,6 +21,9 @@ public class OrderEntity {
 	@Column(name = "deliveryPersonId")
 	private Integer deliveryPersonId;
 
+	@Column(name = "providerId")
+	private Integer providerId;
+
 	@Column(name = "address")
 	private String address;
 
@@ -61,6 +64,14 @@ public class OrderEntity {
 
 	public void setDeliveryPersonId(Integer deliveryPersonId) {
 		this.deliveryPersonId = deliveryPersonId;
+	}
+
+	public Integer getProviderId() {
+		return providerId;
+	}
+
+	public void setProviderId(Integer providerId) {
+		this.providerId = providerId;
 	}
 
 	public String getAddress() {

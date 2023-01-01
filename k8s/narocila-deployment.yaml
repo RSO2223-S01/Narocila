@@ -17,9 +17,9 @@ spec:
           name: narocila
           env:
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgresql://peanut.db.elephantsql.com:5432/rozavelh
+              value: jdbc:postgres://berry.db.elephantsql.com/ocqmzrsq
             - name: KUMULUZEE_DATASOURCES0_USERNAME
-              value: rozavelh
+              value: ocqmzrsq
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -49,7 +49,7 @@ kind: Service
 metadata:
   name: narocila
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       protocol: TCP

@@ -16,6 +16,10 @@ spec:
         - image: rso2223s01/narocila:latest
           name: narocila
           env:
+            - name: KUMULUZEE_OPENAPIMP_UI_SPECIFICATIONSERVER
+              value: http://rso-dostavi.ga
+            - name: KUMULUZEE_OPENAPIMP_SERVERS
+              value: http://rso-dostavi.ga/orders
             - name: KUMULUZEE_SERVER_CONTEXTPATH
               value: /orders
             - name: KUMULUZEE_HEALTH_CHECKS_HTTPHEALTHCHECK0_CONNECTIONURL

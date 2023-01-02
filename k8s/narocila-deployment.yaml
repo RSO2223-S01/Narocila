@@ -19,7 +19,7 @@ spec:
             - name: KUMULUZEE_CONFIG_CONSUL_AGENT
               value: http://consul:8500
             - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-              value: jdbc:postgres://berry.db.elephantsql.com/ocqmzrsq
+              value: jdbc:postgresql://berry.db.elephantsql.com:5432/ocqmzrsq
             - name: KUMULUZEE_DATASOURCES0_USERNAME
               value: ocqmzrsq
             - name: KUMULUZEE_DATASOURCES0_PASSWORD
